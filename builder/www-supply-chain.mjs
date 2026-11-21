@@ -44,6 +44,7 @@ fs.mkdirSync(staging, { recursive: true });
 fs.copyFileSync('/src/www-source.tar.gz', `${staging}/novnc-source.tar.gz`);
 fs.copyFileSync('package-lock.json', `${staging}/package-lock.json`);
 fs.copyFileSync('.kasm-supply-chain.mjs', `${staging}/build.mjs`);
+fs.cpSync('/src/branding', `${staging}/njoy-branding`, { recursive: true });
 const lock = JSON.parse(fs.readFileSync('package-lock.json'));
 const noticesDir = '/supply-chain/notices';
 fs.rmSync(noticesDir, { recursive: true, force: true });
@@ -125,6 +126,7 @@ const pkg = JSON.parse(fs.readFileSync('package.json'));
 const manifest = { format: 'frontend-provenance-v1', name: pkg.name, version: pkg.version,
   revision,
   repository: 'https://github.com/kasmtech/noVNC', license: pkg.license,
+  branding_overlay: 'njoy-branding/apply.mjs',
   components, vendored_components: vendoredComponents, rendered_sources: [...renderedSources].sort(), assets, notices, source_archive: 'sources.tar.gz', source_sha256: sha256('/supply-chain/sources.tar.gz'),
   limitations: ['The vendored DES and base64 implementations have no independently verified upstream release versions; original source notices are preserved, and vulnerability matching may be incomplete.', 'The vendored QOI WebAssembly binary is preserved by hash in the noVNC snapshot; its original Rust source and dependency lockfile are not present in this repository. Complete corresponding-source verification for that pre-existing binary remains outstanding.',
     'Installed npm package contents and the generated lockfile are preserved for rendered modules. Build-only npm dependencies are recorded in the lockfile, not classified as shipped components. Vendored frontend code remains part of the noVNC source snapshot.'] };
