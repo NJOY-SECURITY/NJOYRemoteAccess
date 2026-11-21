@@ -1,6 +1,12 @@
-# KasmVNC - Linux Web Remote Desktop
+# NJOY SECURITY Remote Access
 
-<a href="https://kasmweb.com"><img src="https://5856039.fs1.hubspotusercontent-na1.net/hubfs/5856039/kasmvnc_logo.png" width="300"><a/>
+<a href="https://www.njoysecurity.com.au/"><img src="branding/assets/njoy-logo-teal.svg" alt="NJOY SECURITY" width="300"></a>
+
+This repository is NJOY SECURITY's branded KasmVNC source fork. The packaged web client uses the NJOY SECURITY logo, palette, icons, and session screens. It remains based on KasmVNC and retains the upstream license and technical documentation below.
+
+Branding lives in [`branding/`](branding/). `builder/build-www` applies it to the pinned `kasmweb` source before building the web assets; no separate frontend fork is required. A new upstream frontend revision must pass the overlay's anchor checks before a package is produced.
+
+## KasmVNC foundation
 
 KasmVNC provides remote web-based access to a Desktop or application. While VNC is in the name, KasmVNC differs from other VNC variants such as TigerVNC, RealVNC, and TurboVNC. KasmVNC has broken from the RFB specification which defines VNC, in order to support modern technologies and increase security. KasmVNC is accessed by users from any modern browser and does not support legacy VNC viewer applications. KasmVNC uses a modern YAML based configuration at the server and user level, allowing for ease of management.
 
